@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Translate Tool</title>
+
+  <link rel="stylesheet" href="css/css.css">
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="js/translateTool.js"></script>
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="getStarted">
+            <textarea placeholder="Paste text to be translated here" rows="20" id="inputText" cols="100" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+            <br />       
+            <label for="fname">From Language:</label>
+            <input type="text" id="from"><br><br>
+            <label for="fname">To Language:</label>
+            <input type="text" id="to"><br><br>
+            <a href="#" class="greenButton" onclick="startTranslation()">Start</a>
+            <p id="errorMessage">Please provide input in all fields.</p>
+        </div>
+        <div id="translateTool">
+            <h2 id="title"></h2>
+            <div id="fromLanguageDiv">
+                
+            </div>
+            <div id="toLanguageDiv">
+
+            </div>
+        </div>
+    </div>
+
+
+
+  
+</body>
+</html>
