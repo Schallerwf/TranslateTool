@@ -3,7 +3,6 @@ body {
     font-family: rubik, sans-serif;
 }
 
-
 h2 {margin-left: 55px;}
 
 textarea {
@@ -22,7 +21,7 @@ textarea {
   border-style: none solid solid none;
   border-width: medium 1px 1px medium;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
-  color: #555555;
+  color: black;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 1em;
   line-height: 1.4em;
@@ -35,6 +34,10 @@ textarea:focus {
     outline-width: 0;
 }
 
+.hiddenLink {
+    color: inherit;
+    text-decoration: inherit;
+}
 
 .greenButton {
     background-color:#44c767;
@@ -57,14 +60,14 @@ textarea:focus {
     top:1px;
 }
 
-#translateTool {
-    display: none;
-    height:800px;
+#container {
     text-align: center;
 }
 
-#textContainer {
-
+#translateTool {
+    display: none;
+    height:600px;
+    text-align: center;
 }
 
 #fromLanguageDiv {
@@ -84,6 +87,15 @@ textarea:focus {
     width:30%;
     padding:10px;
     overflow: auto;
+}
+
+#results {
+    text-align: left;
+    background-color: white;
+    height:20%;
+    width:60%;
+    display: inline-block;
+    padding:10px;
 }
 
 #errorMessage {

@@ -27,6 +27,7 @@ function startTranslation() {
         // Hide input and reveal translation tool.
         $("#getStarted").css("display", "none");
         $("#translateTool").css("display", "block");
+        highlightSentence();
     }
 }
 
@@ -61,6 +62,14 @@ function parseInput(text) {
     }
 }
 
+function updateResults() {
+    var html = "";
+    for (var ndx = 0; ndx < toSentences.length; ndx++) {
+        html += toSentences[ndx];
+    }
+    $("#results").html(html);
+}
+
 function highlightSentence() {
     var point = getCenterOfElem($("#fromLanguageDiv"));
     var elemInCenter = document.elementFromPoint(point[0], point[1]);
@@ -71,22 +80,30 @@ function highlightSentence() {
     
     if (oldSentenceNdx != sentenceNdx) {
         $("#fromSentence"+oldSentenceNdx).css("color", "black");
+        $("#fromSentence"+oldSentenceNdx).css("font-weight", "normal");
     }
     $("#fromSentence"+sentenceNdx).css("color", "red");
+    $("#fromSentence"+sentenceNdx).css("font-weight", "bold");
 
-    if (oldSentenceNdx != sentenceNdx) {
+    if (oldSentenceNdx != sentenceNdx || oldSentenceNdx == 0 && sentenceNdx == 0) {
         toSentences[oldSentenceNdx] = $("#toSentence"+oldSentenceNdx+"Input").val() || " ";
         $("#toSentence"+oldSentenceNdx).html("<p>"+toSentences[oldSentenceNdx]+"</p>");
-        $("#toSentence"+sentenceNdx).html('<input type="text" id="'+"toSentence"+sentenceNdx+"Input"+'"></input>');
+        $("#toSentence"+sentenceNdx).html('<textarea style="height:10px;" id="'+"toSentence"+sentenceNdx+"Input"+'"></textarea>');
         $("#toSentence"+sentenceNdx+"Input").val(toSentences[sentenceNdx]);
     }
 
-    // TODO Have to figure out how to keep the scroll in sync.
-    
+    var fromHeight = $("#fromSentence"+sentenceNdx).height();
+    var toHeight = $("#toSentence"+sentenceNdx).height();
+    var maxHeight = fromHeight > toHeight ? fromHeight : toHeight;
+    $("#fromSentence"+sentenceNdx).css("height", maxHeight);
+    $("#toSentence"+sentenceNdx).css("height", maxHeight);
+    $("#toSentence"+sentenceNdx+"Input").css("height", maxHeight);
 
+    $('#toLanguageDiv').scrollTop($(this).scrollTop());
 
-
+    updateResults();
 }
+
 
 function getCenterOfElem(elem) {
     var offset = elem.offset();
